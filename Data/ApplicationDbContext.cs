@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using MovieProDemo.Models.Database;
 
 namespace MovieProDemo.Data
 {
@@ -12,5 +14,7 @@ namespace MovieProDemo.Data
         : base(options)
     {
     }
+
+    public DbSet<Collection> Collection { get; set; }
   }
 }
