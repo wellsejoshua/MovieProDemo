@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using MovieProDemo.Data;
 using MovieProDemo.Models.Settings;
 using MovieProDemo.Services;
+using MovieProDemo.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,15 @@ namespace MovieProDemo
               ConnectionService.GetConnectionString(Configuration)));
       services.AddDatabaseDeveloperPageExceptionFilter();
 
-      services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-          .AddEntityFrameworkStores<ApplicationDbContext>();
+      //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+      //   .AddEntityFrameworkStores<ApplicationDbContext>();
+
+      //services.AddIdentity<IdentityUser, IdentityRole>()
+      // .AddEntityFrameworkStores<ApplicationDbContext>();
+
+      services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+       .AddEntityFrameworkStores<ApplicationDbContext>();
+
       services.AddControllersWithViews();
 
       services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
