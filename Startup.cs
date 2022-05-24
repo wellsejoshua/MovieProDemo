@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MovieProDemo.Data;
 using MovieProDemo.Models.Settings;
+using MovieProDemo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace MovieProDemo
     {
       services.AddDbContext<ApplicationDbContext>(options =>
           options.UseNpgsql(
-              Configuration.GetConnectionString("DefaultConnection")));
+              ConnectionService.GetConnectionString(Configuration)));
       services.AddDatabaseDeveloperPageExceptionFilter();
 
       services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
