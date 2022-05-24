@@ -49,6 +49,8 @@ namespace MovieProDemo
       services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
       services.AddTransient<SeedService>();
+      services.AddHttpClient();
+      services.AddScoped<IRemoteMovieService, TMDBMovieService>();
 
     }
 
