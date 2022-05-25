@@ -16,14 +16,14 @@ namespace MovieProDemo.Models.Database
 
     public string Title { get; set; }
     public string TagLine { get; set; }
-    public string OverView { get; set; }
+    public string Overview { get; set; }
     public int RunTime { get; set; }
 
     [DataType(DataType.Date)]
     [Display(Name = "Release Date")]
     public DateTime ReleaseDate { get; set; }
 
-    public MovieRating Ratingy { get; set; }
+    public MovieRating Rating { get; set; }
     public float VoteAverage { get; set; }
 
     public byte[] Poster { get; set; }
