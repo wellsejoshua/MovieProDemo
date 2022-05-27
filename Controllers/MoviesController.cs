@@ -203,10 +203,34 @@ namespace MovieProDemo.Controllers
       return _context.Movie.Any(e => e.Id == id);
     }
 
+    public async Task<IActionResult> Details(int? id, bool local = false)
+    {
+      if (id == null)
+      {
+        return NotFound();
+      }
+      //if movie is not null try to find in database
+      //incoming bool tells you if you should look for it locally or grab it from the database
 
+      Movie movie = new();
+      if(local)
+      {
+        movie = await _context.Movie.Include(m => m.Cast).Include(m => m.Crew).FirstOrDefaultAsync(m => m.Id == id);
+      }
+      else
+      {
+        //if bool false data is coming from the api  (casting nullable int to int
+        var movieDetail = await _tmdbMovieService.MovieDetailAsync((int)id);
+        movie = await _tmdbMappingService.MapMovieDetailAsync(movieDetail);
+      }
+      if(movie == null)
+      {
+        return NotFound();
+      }
 
-
-
+      ViewData["Local"] = local;
+      return View(movie);
+    }
 
     private async Task AddToMovieCollection(int movieId, string collectionName)
     {
