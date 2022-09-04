@@ -16,7 +16,7 @@ namespace MovieProDemo.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.15")
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -251,7 +251,7 @@ namespace MovieProDemo.Data.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("OverView")
+                    b.Property<string>("Overview")
                         .HasColumnType("text");
 
                     b.Property<byte[]>("Poster")
@@ -260,7 +260,7 @@ namespace MovieProDemo.Data.Migrations
                     b.Property<string>("PosterType")
                         .HasColumnType("text");
 
-                    b.Property<int>("Ratingy")
+                    b.Property<int>("Rating")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("ReleaseDate")
